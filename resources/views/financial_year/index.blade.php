@@ -27,9 +27,6 @@
             </button>
         </div>
     </div>
-
-    <div class="modal fade financial_year_model" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-    </div>
 </section>
 <!-- /.content -->
 
