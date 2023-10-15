@@ -1530,5 +1530,11 @@ return [
     'product_prices_imported_successfully' => 'Product prices imported successfully',
     'price_group_price_type_tooltip' => 'If <b>Fixed</b> - the entered price will be used. If <b>Percentage</b> - price will be that much % of default selling price',
     'dropdown' => 'Dropdown',
-    'enter_dropdown_values' => 'Enter dropdown options, one option per line'
+    'enter_dropdown_values' => 'Enter dropdown options, one option per line',
+    'all_your_financial_years' => 'All Financial Years',
+    'add_financial_year' => 'Add Financial Year',
+    'financial_years' => 'Financial Years',
+    'financial_year' => 'Financial Year',
+    'financial_year_name' => 'Financial Year Name',
+    'edit_financial_year' => 'Edit Financial Year'
 ];

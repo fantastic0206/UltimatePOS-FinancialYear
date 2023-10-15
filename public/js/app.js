@@ -1853,6 +1853,105 @@ $(document).ready(function() {
         });
     });
 
+    // financial year
+    $(document).on('submit', 'form#financial_year_add_form', function(e) {
+        e.preventDefault();
+        var data = $(this).serialize();
+
+        $.ajax({
+            method: 'POST',
+            url: $(this).attr('action'),
+            dataType: 'json',
+            data: data,
+            success: function(result) {
+                if (result.success == true) {
+                    $('div.financial_years_modal').modal('hide');
+                    toastr.success(result.msg);
+                    financial_years_table.ajax.reload();
+                } else {
+                    toastr.error(result.msg);
+                }
+            },
+        });
+    });
+
+    var financial_years_table = $('#financial_years_table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '/financial-year',
+        columnDefs: [
+            {
+                targets: 2,
+                orderable: false,
+                searchable: false,
+            },
+        ],
+        columns: [
+            { data: 'title', name: 'title' },
+            { data: 'start_date', name: 'start_date' },
+            { data: 'end_date', name: 'end_date' },
+            { data: 'status', name: 'status' },
+            { data: 'action', name: 'action' },
+        ],
+    });
+
+    $(document).on('click', 'button.edit_financial_year_button', function() {
+        $('div.financial_years_modal').load($(this).data('href'), function() {
+            $(this).modal('show');
+
+            $('form#financial_year_edit_form').submit(function(e) {
+                e.preventDefault();
+                var data = $(this).serialize();
+
+                $.ajax({
+                    method: 'POST',
+                    url: $(this).attr('action'),
+                    dataType: 'json',
+                    data: data,
+                    success: function(result) {
+                        if (result.success == true) {
+                            $('div.financial_years_modal').modal('hide');
+                            toastr.success(result.msg);
+                            financial_years_table.ajax.reload();
+                        } else {
+                            toastr.error(result.msg);
+                        }
+                    },
+                });
+            });
+        });
+    });
+
+    $(document).on('click', 'button.delete_financial_year_button', function() {
+        swal({
+            title: LANG.sure,
+            text: LANG.confirm_delete_financial_year,
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then(willDelete => {
+            if (willDelete) {
+                var href = $(this).data('href');
+                var data = $(this).serialize();
+
+                $.ajax({
+                    method: 'DELETE',
+                    url: href,
+                    dataType: 'json',
+                    data: data,
+                    success: function(result) {
+                        if (result.success == true) {
+                            toastr.success(result.msg);
+                            financial_years_table.ajax.reload();
+                        } else {
+                            toastr.error(result.msg);
+                        }
+                    },
+                });
+            }
+        });
+    });
+
     //Delete Sale
     $(document).on('click', '.delete-sale', function(e) {
         e.preventDefault();

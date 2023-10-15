@@ -1351,5 +1351,6 @@ return [
     'zatca_qr_help' => 'Đối với đất nước Ả Rập Xê-út',
     'customer_irrespective_of_sell' => 'Xem khách hàng bất kể họ bán hàng',
     'img_url_help_text' => 'Hoặc URL của hình ảnh',
-    'delivery_person' => 'Nhân viên giao hàng'
+    'delivery_person' => 'Nhân viên giao hàng',
+    'all_your_financial_years' => 'Tất cả các năm tài chính'
 ];

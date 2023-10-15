@@ -127,7 +127,8 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 
     Route::get('/user/profile', [UserController::class, 'getProfile'])->name('user.getProfile');
     Route::post('/user/update', [UserController::class, 'updateProfile'])->name('user.updateProfile');
     Route::post('/user/update-password', [UserController::class, 'updatePassword'])->name('user.updatePassword');
-    Route::get('/financial/year', [FinancialYearController::class, 'index'])->name('financial');
+    
+    Route::resource('financial-year', FinancialYearController::class);
 
     Route::resource('brands', BrandController::class);
 
